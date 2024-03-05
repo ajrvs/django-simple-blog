@@ -12,6 +12,7 @@
         <hr>
         <div class="post-content">{{post.content}}</div>
         <hr>
+        <div class="updated post"><a href="{% url 'update_post' post.title %}">Edit this Post</a></div>
         <div class="delete post"><a href="{% url 'delete' post.title %}">Delete this Post</a></div>
     </div>
 {% endblock %}

@@ -24,10 +24,9 @@ def delete(request, title):
     context = {"post":post}
     if request.method == "POST":
         post.delete()
-        messages.success(request, 'Blog post deleted successfully.')
-        return redirect('home')
+        messages.success(request, "Blog post deleted successfully.")
+        return redirect("home")
     return render(request, "delete.html", context)
-    # return render(request, "home.html", context)
 
 def create_post(request):
     if request.method == "POST":
@@ -38,3 +37,16 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'create_post.html', {'form': form})
+
+def update_post(request, title):
+    post = get_object_or_404(BlogPost, title=title)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Blog post updated successfully.")
+            return redirect('blog', title=post.title)
+    else:
+        form = PostForm(instance=post)
+    
+    return render(request, 'edit.html', {'form': form, 'post': post})
