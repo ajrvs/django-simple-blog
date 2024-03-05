@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import BlogPost
+from .forms import PostForm
 
 # Create your views here.
 def home(request):
@@ -27,3 +28,13 @@ def delete(request, title):
         return redirect('home')
     return render(request, "delete.html", context)
     # return render(request, "home.html", context)
+
+def create_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('all_posts')
+    else:
+        form = PostForm()
+    return render(request, 'create_post.html', {'form': form})
