@@ -18,8 +18,10 @@ To implement this, follow these steps:
 
 - Create a new Django project using `django-admin startproject projectname`.
 - Create a new Django app using `python manage.py startapp blog`.
+- Migrate and Create superuser.
 - Define a model for blog posts in the `blog/models.py` file.
 - Register the Post model in the blog/admin.py file to make it accessible in the Django admin interface.
+- Again, makemigrations and migrate.
 - Create views for handling CRUD operations on blog posts in the blog/views.py file.
 - Define functions for listing all blog posts, viewing a single blog post, creating a new blog post, updating an existing blog post, and deleting a blog post.
 - Define URL patterns in the blog/urls.py file to map URLs to the views created in step 5.
