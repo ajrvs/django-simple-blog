@@ -11,5 +11,7 @@
         <div class="updated date"><p>Updated on {{ post.updated_at }}</p></div>
         <hr>
         <div class="post-content">{{post.content}}</div>
+        <hr>
+        <div class="delete post"><a href="{% url 'delete' post.title %}">Delete this Post</a></div>
     </div>
 {% endblock %}
