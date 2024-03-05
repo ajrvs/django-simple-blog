@@ -16,5 +16,5 @@ Warning: Delete
         <input type="hidden" name="title" value="{{ post.title }}">
         <button type="submit">Yes, Confirm Deletion</button>
     </form>
-    <a href="{% url 'blog' post.title %}">No, Cancel</a>
+    <a href="{% url 'blog' post.title %}" class="cancel-button">No, Cancel</a>
 {% endblock %}
